@@ -4,6 +4,8 @@
 
 : 사용자로부터 받은 요청을 처리하여 응답하는 역할
 
+<img src="./Controller_img.png" alt="Controller_img" />
+
 
 
 ##### 데코레이터
