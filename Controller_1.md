@@ -1,4 +1,4 @@
-# 컨트롤러
+# Controller
 
 ##### 컨트롤러
 
@@ -303,9 +303,74 @@ async create(@Body() createCatDto: CreateCatDto) {
 
 
 
+##### 리소트 샘플
+
+cats.controller.ts
+
+```typescript
+@Controller('cata')
+export class CatsController {
+	@Post()
+	create(@Body() createCatDto: CreateCatDto) {
+		return 'This action adds a new cat';
+	}
+	
+	@Get()
+	findAll(@Query() query: ListAllEntities) {
+		return 'This action returns all cats (limit: ${query.limit} items)';
+	}
+	
+	@Put(':id')
+	update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+		return 'This action updates a #${id} cat';
+	}
+	
+	@Delete(':id')
+	remove(@Param('id') id: string) {
+		return 'This action removes a #${id} cata';
+	}
+}
+```
+
+app.module.ts
+
+```typescript
+@Module({
+	controllers: [CatsController],
+})
+export class AppModule {}
+```
 
 
 
+##### 요청에 대한 또 다른 응답 방식
+
+return이 아닌 Response를 활용한 응답
+
+```typescript
+@Controller('cats')
+export class CatsController {
+	@Post()
+	create(@Res() res: Response) {
+		res.status(HttpStatus.CREATED).send();
+	}
+	
+	@Get()
+	findAll(@Res() res: Response) {
+		res.status(HttpStatus.OK).json([]);
+	}
+}
+```
+
+return과 Response를 화용한 응답
+
+```typescript
+@Get()
+findAll(@Res({ passthrough: true }) res: Response) {
+	res.status(HttpStatus.OK);
+	return [];
+}
+```
 
 
 
