@@ -4,9 +4,13 @@
 
 module과 provider 관계 및 종속성을 해결하는 데 사용하는 데이터 구조
 
+
+
 ##### module의 속성
 
 providers, controllers, imports, exports
+
+
 
 ##### 기능 모듈
 
@@ -27,6 +31,8 @@ CLI를 이용한 모듈 생성
 $ nest g module cats
 ```
 
+
+
 ##### 루트 모듈
 
 ex) app.module.ts
@@ -38,6 +44,8 @@ ex) app.module.ts
 
 export class AppModule {}
 ```
+
+
 
 ##### 공유 모듈
 
@@ -61,6 +69,8 @@ module -> import, export 같이 사용 가능
 
 : 가져오고 다시 내보내는 용도로 사용
 
+
+
 ##### 의존성 주입 가능
 
 ```typescript
@@ -75,6 +85,8 @@ export class CatsModule {
 
 모듈 클래스 자체를 주입할 수는 없다.
 
+
+
 ##### 글로벌 모듈
 
 전역에서 사용하는 모듈
@@ -82,6 +94,8 @@ export class CatsModule {
 **@Global()** 을 추가하면 모듈의 범위를 전역으로 확장시킬 수 있다.
 
 - 모든 모듈을 글로벌 모듈로 만드는 것은 좋은 디자인이 아님
+
+
 
 ##### 동적 모듈
 
