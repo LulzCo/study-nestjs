@@ -50,7 +50,66 @@ forRoutes({ path: 'ab*cd', method: RequestMethod.ALL});
 
 
 
-##### 미들웨어 소비자
+##### 미들웨어 소비자 - MiddlewareConsumer
 
-미들웨어를 관리하는 
+미들웨어를 관리하는 기능 제공
 
+
+
+##### 경로 제외
+
+미들웨어가 적용되는 특정 경로를 제외
+
+```typescript
+consumer
+	.apply(LoggerMiddleware)
+	.exclude(
+		{path: 'cats', method: RequestMethod.GET},
+		{path: 'cats', method: REquestMethod.POST},
+		'cats/(.*)'
+	)
+	.forRoutes(CatsController);
+```
+
+
+
+##### 기능적 미들웨어
+
+LoggerMiddleware를 직접 만들어보기
+
+```typescript
+export function logger(reqL Request, res: Response, next: NextFunction) {
+	console.log('Request ...');
+	next();
+}
+```
+
+```typescript
+consumer
+	.apply(logger)
+	.forRoutes(CatsController);
+```
+
+
+
+##### 다중 미들웨어
+
+여러 미들웨어 적용하기
+
+```typescript
+consumer.apply(core(), helmet(), logger).forRoutes(CatsController);
+```
+
+여러 미들웨어를 괄호 안에 ' **,** '로 구분하며 여러 미들웨어 적용 가능
+
+
+
+##### 글로벌 미들웨어
+
+```typescript
+const app = await NestFactory.create(AppModule);
+app.use(logger);
+await app.listen(3000);
+```
+
+app.use()
