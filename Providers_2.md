@@ -66,15 +66,21 @@ export class CatsController {
 }
 ```
 
+
+
 ##### 의존성 주입 - DI(Dependency Injection)
 
 : nest는 의존성 주입에 기반한 디자인 패턴으로 구축
+
+
 
 ##### 제어 역전 - IoC(Inversion of Controller)
 
 : nest가 사용하는 전략, 프레임워크에 제어의 권한을 넘김으로써 클라이언트 코드가 신경써야할 것을 줄이는 전략
 
 의존성 주입의 기초가 되는 기술
+
+
 
 ##### 선택적 제공자
 
@@ -88,6 +94,8 @@ export class HttpService<T> {
 	constructor(@Optional() @Inject('HTTP_OPTIONS') private httpClient: T) {}
 }
 ```
+
+
 
 ##### Controller, Service 등록
 
