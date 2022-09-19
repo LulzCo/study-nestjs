@@ -48,5 +48,9 @@ export class AppModule implements NestModule {
 forRoutes({ path: 'ab*cd', method: RequestMethod.ALL});
 ```
 
-미들웨어
+
+
+##### 미들웨어 소비자
+
+미들웨어를 관리하는 
 
