@@ -29,7 +29,11 @@ export class BoardService {
         return board;
     }
     
-    getBoardById(id: string): Board{
+    getBoardById(id: string): Board {
         return this.board.find((board) => board.id === id);
+    }
+
+    deleteBoard(id: string): void {
+        this.board = this.board.filter((board) => board.id !== id);
     }
 }

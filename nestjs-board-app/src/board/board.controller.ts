@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { throws } from 'assert';
 import { Board } from './board.model';
 import { BoardService } from './board.service';
@@ -19,7 +19,14 @@ export class BoardController {
     }
 
     @Get('/:id')
-    getBoardById(@Param('id') id: string) {
+    getBoardById(@Param('id') id: string): Board {
         return this.boardService.getBoardById(id);
     }
+
+    @Delete('/:id')
+    deleteBoard(@Param('id') id: string): Board[] {
+        this.boardService.deleteBoard(id);
+        return this.boardService.getAllBoard();
+    }
+
 }
