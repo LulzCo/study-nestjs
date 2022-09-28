@@ -10,35 +10,35 @@ export class BoardController {
     constructor(private boardService: BoardService) {}
 
     @Get()
-    getAllBoard(): Board[] {
+    getAllBoard(): Promise<Board[]> {
         return this.boardService.getAllBoard();
     }
 
     @Post()
     @UsePipes(ValidationPipe)
-    createBoard(@Body() createBoardDto: CreateBoardDto): Board {
+    createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
         return this.boardService.createBoard(createBoardDto);
+
     }
 
     @Get('/:id')
-    getBoardById(@Param('id') id: string): Board {
+    getBoardById(@Param('id') id: number): Promise<Board> {
         // return this.boardService.getBoardById(id);
         return this.boardService.getBoardById(id);
     }
 
     @Delete('/:id')
-    deleteBoard(@Param('id') id: string): Board[] {
+    deleteBoard(@Param('id') id: number): void {
         this.boardService.deleteBoard(id);
-        return this.boardService.getAllBoard();
     }
 
-    @Patch('/:id/status') 
-    updateBoardStatus(
-        @Param('id') id: string,
-        @Body('status', BoardStatusValidationPipe) status: BoardStatus,
-    ) {
-        return this.boardService.updateBoardStatus(id, status);
-    }
+    // @Patch('/:id/status') 
+    // updateBoardStatus(
+    //     @Param('id') id: number,
+    //     @Body('status', BoardStatusValidationPipe) status: BoardStatus,
+    // ) {
+    //     return this.boardService.updateBoardStatus(id, status);
+    // }
 
 
 }

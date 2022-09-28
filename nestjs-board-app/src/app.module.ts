@@ -7,6 +7,7 @@ import { typeOrmConfig } from './configs/typeorm.config';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
     BoardModule,
   ],
   controllers: [AppController],
