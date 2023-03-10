@@ -9,4 +9,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     database: 'board-app',
     entities: [__dirname + '/../**/*.entity.js'],
     synchronize: true,
+    autoLoadEntities: true,
 }

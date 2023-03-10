@@ -1,9 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { title } from 'process';
+import { v1 as uuid } from 'uuid';
+import { throws } from 'assert';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Board } from './board.entity';
 import { Repository } from 'typeorm';
-import { BoardStatus } from './board.model';
+import { BoardStatus } from './board-status.enum';
+
 
 @Injectable()
 export class BoardService {
@@ -48,4 +52,11 @@ export class BoardService {
         
         this.board = this.board.filter((board) => board.id !== id);
     }
+
+    // updateBoardStatus(id: number, status: BoardStatus): Board {
+        // const board = this.getBoardById(id);
+        
+
+        // return board;
+    // }
 }

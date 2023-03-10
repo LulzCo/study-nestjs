@@ -1,3 +1,5 @@
+import { BoardStatus } from "./board-status.enum";
+
 export interface Board {
     id: number;
     title: string;
@@ -5,7 +7,3 @@ export interface Board {
     status: BoardStatus;
 }
 
-export enum BoardStatus {
-    PUBLIC = 'PUBLIC',
-    PRIVATE = 'PRIVATE'
-}
